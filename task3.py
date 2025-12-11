@@ -1,49 +1,65 @@
+# TASK 1
 email = "Amit_ml@gmail.edu"
 
-# Validation
+# Validation (اختياري لو عايز)
 if email.count("@") != 1 or "." not in email.split("@")[1]:
     print("Invalid email")
 else:
     username = email.split("@")[0]
-    domain_full = email.split("@")[1]
-    domain = domain_full.split(".")[0]
+    after_at = email.split("@")[1]
+    domain = after_at.split(".")[0]
 
-    print("Username:", username)
-    print("Domain:", domain)
-
-    if domain_full.endswith(".com"):
-        print("Commercial Domain")
-    elif domain_full.endswith(".edu"):
-        print("Educational Domain")
+    if email.endswith(".com"):
+        domain_type = "Commercial Domain"
+    elif email.endswith(".edu"):
+        domain_type = "Educational Domain"
     else:
-        print("Other Domain")
-print(50 * "-")
-msg = "###!!@mocleW EPGTQ!!!6789"
+        domain_type = "Other Domain"
 
-core = "".join([c for c in msg if c.isalpha() or c == " "])
-first, second = core.split()
+    print(username)
+    print(domain)
+    print(domain_type)
 
-decoded = first[::-1] + " " + second
-print(decoded)
-print(50 * "-")
-msg = "&&&**$gnirtS PLIO!!@1234"
-
-core = "".join([c for c in msg if c.isalpha() or c == " "])
-first, second = core.split()
-
-second = second.replace("I", "E").replace("O", "U")
-
-decoded = first[::-1] + " " + second
-print(decoded)
-print(50 * "-")
-msg = "##$$$@!yalpstcejorp EPUVT****9887"
-
-core = "".join([c for c in msg if c.isalpha() or c == " "])
-first, second = core.split()
+print(50*"-")
 
 
-second = second.replace("E", "A").replace("U", "O")
+# TASK 2
+encoded = "###!!@mocleW EPGTQ!!!6789"
 
-decoded = first[::-1] + " " + second
-print(decoded)
-print(50 * "-")
+core = encoded[6:18]   # شغّالة
+words = core.split()
+decoded_first = words[0][::-1]
+decoded_second = words[1]
+print(decoded_first, decoded_second)
+
+numbers = encoded[-4:][::-1]
+print(numbers)
+print(50*"-")
+
+
+# TASK 3
+encoded = "&&&$gnirtS PLIO!!@1234"
+
+core = encoded[4:16]  # ← هنا كان الخطأ، لازم تبدأ من index 4 مش 6
+words = core.split()
+first = words[0][::-1]
+second = words[1].replace("I", "E").replace("O", "U")
+print(first, second)
+
+numbers = encoded[-4:][::-1]
+print(numbers)
+print(50*"-")
+
+
+# TASK 4
+encoded = "##$$$@!yalpstcejorp EPUVT**9887"
+
+core = encoded[7:25]  # شغّالة
+words = core.split()
+first = words[0][::-1]
+second = words[1].replace("E", "A").replace("U", "O")
+print(first, second)
+
+numbers = encoded[-4:][::-1]
+print(numbers)
+print(50*"-")
